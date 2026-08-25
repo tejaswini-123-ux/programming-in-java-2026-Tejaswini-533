@@ -1,0 +1,38 @@
+class Employee {
+    String name;
+    int employeeId;
+    double monthlySalary;
+
+    // Constructor
+    Employee(String name, int employeeId, double monthlySalary) {
+        this.name = name;
+        this.employeeId = employeeId;
+        this.monthlySalary = monthlySalary;
+    }
+
+    // Inner class
+    class Salary {
+        void calculateAnnualSalary() {
+            double annualSalary = monthlySalary * 12;
+
+            System.out.println("Employee Name: " + name);
+            System.out.println("Employee ID: " + employeeId);
+            System.out.println("Monthly Salary: " + monthlySalary);
+            System.out.println("Annual Salary: " + annualSalary);
+        }
+    }
+}
+
+public class EmployeeDetails {
+    public static void main(String[] args) {
+
+        // Create Employee object
+        Employee emp = new Employee("Ravi", 101, 30000);
+
+        // Create inner class object
+        Employee.Salary salary = emp.new Salary();
+
+        // Display details and annual salary
+        salary.calculateAnnualSalary();
+    }
+}
