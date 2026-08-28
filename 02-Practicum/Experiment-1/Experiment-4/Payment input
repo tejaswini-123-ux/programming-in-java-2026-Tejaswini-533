@@ -1,0 +1,44 @@
+class Payment {
+    void makePayment(double amount) {
+        System.out.println("Payment: Rs" + amount);
+    }
+
+    void makePayment(double amount, String id) {
+        System.out.println("Payment: Rs" + amount + " ID: " + id);
+    }
+}
+
+class CreditCardPayment extends Payment {
+    void makePayment(double amount) {
+        System.out.println("Credit Card: Rs" + amount);
+    }
+}
+
+class UPIPayment extends Payment {
+    void makePayment(double amount) {
+        System.out.println("UPI Payment: Rs" + amount);
+    }
+}
+
+class NetBankingPayment extends Payment {
+    void makePayment(double amount) {
+        System.out.println("Net Banking Payment: Rs" + amount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Payment p;
+
+        p = new CreditCardPayment();
+        p.makePayment(5000);
+
+        p = new UPIPayment();
+        p.makePayment(1200.50);
+
+        p = new NetBankingPayment();
+        p.makePayment(2500);
+        p.makePayment(2500, "TXN100");
+    }
+}
