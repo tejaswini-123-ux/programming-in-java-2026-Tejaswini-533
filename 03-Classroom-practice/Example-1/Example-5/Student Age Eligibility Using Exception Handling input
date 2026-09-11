@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+class InvalidAgeException extends Exception {
+    InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18 || age > 25) {
+            throw new InvalidAgeException("Invalid age for student eligibility");
+        }
+        System.out.println("Student is eligible.");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter student age: ");
+            int age = sc.nextInt();
+
+            try {
+                checkAge(age);
+            } catch (InvalidAgeException e) {
+                System.out.println("Exception: " + e.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a number.");
+        } finally {
+            System.out.println("Eligibility check completed.");
+        }
+
+        sc.close();
+    }
+}
