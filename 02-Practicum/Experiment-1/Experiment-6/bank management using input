@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String first = sc.next();
+
+        // Customer Management
+        if (first.charAt(0) == 'C') {
+
+            String customerId = first;
+            String name = sc.next();
+            String contact = sc.next();
+
+            System.out.println("Customer ID = " + customerId);
+            System.out.println("Name = " + name);
+            System.out.println("Contact = " + contact);
+
+        } else {
+
+            // Account Management
+            double balance = Double.parseDouble(first);
+
+            while (sc.hasNext()) {
+
+                String operation = sc.next();
+
+                if (operation.equalsIgnoreCase("Deposit")) {
+
+                    double amount = sc.nextDouble();
+                    balance = balance + amount;
+
+                } else if (operation.equalsIgnoreCase("Withdraw")) {
+
+                    double amount = sc.nextDouble();
+                    balance = balance - amount;
+                }
+            }
+
+            System.out.println("Balance ₹" + (int) balance);
+        }
+
+        sc.close();
+    }
+}
