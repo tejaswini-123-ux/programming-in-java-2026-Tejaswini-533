@@ -1,0 +1,35 @@
+import java.util.Scanner;
+class InvalidMarksException extends Exception {
+    public InvalidMarksException(String message) {
+        super(message);
+    }
+}
+
+public class StudentMarksTracker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the student's marks: ");
+        int marks = scanner.nextInt();
+        
+  
+        try {
+            validateMarks(marks);
+        } catch (InvalidMarksException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+    
+    
+    public static void validateMarks(int marks) throws InvalidMarksException {
+        if (marks >= 0 && marks <= 100) {
+            
+            System.out.println("Valid marks entered: " + marks);
+        } else {
+            
+            throw new InvalidMarksException("Marks must be between 0 and 100. Entered: " + marks);
+        }
+    }
+}
