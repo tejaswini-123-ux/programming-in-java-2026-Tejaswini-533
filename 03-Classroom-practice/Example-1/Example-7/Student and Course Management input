@@ -1,0 +1,37 @@
+class StudentThread extends Thread {
+    public void run() {
+        String[] students = {
+            "Tejaswini", "Banu", "Rahul", "Priya", "Anjali"
+        };
+
+        System.out.println("Names of 5 Students:");
+        for (String student : students) {
+            System.out.println(student);
+        }
+    }
+}
+
+class CourseThread extends Thread {
+    public void run() {
+        String[] courses = {
+            "Java", "Data Structures", "DBMS",
+            "Computer Networks", "Operating Systems"
+        };
+
+        System.out.println("Names of 5 Courses:");
+        for (String course : courses) {
+            System.out.println(course);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        StudentThread thread1 = new StudentThread();
+        CourseThread thread2 = new CourseThread();
+
+        thread1.start();
+        thread2.start();
+    }
+}
