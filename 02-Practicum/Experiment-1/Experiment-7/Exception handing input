@@ -1,0 +1,57 @@
+import java .util.Scanner;
+
+class InsufficientBalanceException extends Exception {
+    InsufficientBalanceException(String message) {
+        super(message);
+    }
+}
+
+class Account {
+    String accountHolderName;
+    double accountBalance;
+
+    Account(String name, double balance) {
+        accountHolderName = name;
+        accountBalance = balance;
+    }
+
+    void withdraw(double amount) throws InsufficientBalanceException {
+        if (amount > accountBalance) {
+            throw new InsufficientBalanceException(
+                "Insufficient balance! Withdrawal cannot be processed."
+            );
+        }
+
+        accountBalance -= amount;
+        System.out.println("Withdrawal successful.");
+        System.out.println("Remaining balance: ₹" + accountBalance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter account holder name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter account balance: ₹");
+        double balance = sc.nextDouble();
+
+        Account account = new Account(name, balance);
+
+        System.out.print("Enter withdrawal amount: ₹");
+        double amount = sc.nextDouble();
+
+        try {
+            account.withdraw(amount);
+        } 
+        catch (InsufficientBalanceException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Available balance: ₹" + account.accountBalance);
+        }
+
+        sc.close();
+    }
+  }
+}
